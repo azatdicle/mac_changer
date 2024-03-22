@@ -1,6 +1,5 @@
-import subprocess as sp
+import subprocess as sp#Subprocess Linux komutlarını kullanma
 import optparse
-
 print("""
 #---------------------------------------------------------------------#
 #    _     _____   _  _____   ____ ___ ____ _     _____               #
@@ -17,17 +16,20 @@ print("""
 #---------------------------------------------------------------------#
                    @azatdicle Mac Changer
 """)
+def mac():
+    parser=optparse.OptionParser()
+    parser.add_option("-i","--interface",dest="interface",help="interface to change.")
+    parser.add_option("-m","--mac_addres",dest="mac_addres",help="new mac addres")
+    (user_input,arguments)=parser.parse_args()
+    if not user_input.interface or not user_input.mac_addres:
+        print("Please mac addres and interface")
+        return
+    user_interface=user_input.interface
+    user_mac_addres=user_input.mac_addres
 
-parser = optparse.OptionParser()
-parser.add_option("-i", "--interface", dest="interface", help="interface to change.")
-parser.add_option("-m", "--mac_address", dest="mac_address", help="new mac address")
+    sp.call(["ifconfig",user_interface,"down"])
+    sp.call(["ifconfig",user_interface,"hw","ether",user_mac_addres])
+    sp.call(["ifconfig",user_interface,"up"])
+    print("Changed Mac addres new mac addres ",user_mac_addres)
 
-(options, arguments) = parser.parse_args()
-
-user_interface = options.interface
-user_mac_address = options.mac_address
-
-sp.call(["ifconfig", user_interface, "down"])
-sp.call(["ifconfig", user_interface, "hw", "ether", user_mac_address])
-sp.call(["ifconfig", user_interface, "up"])
-print("Mac changed")
+mac()
