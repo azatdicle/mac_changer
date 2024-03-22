@@ -2,7 +2,7 @@
 Bu bir MAC adresi değiştirme aracıdır.
 
 - `-i` : Arayüz seçin.
-- `-m` : MAC adresinizi değiştirin.
+- `-m` : Yeni Mac addresi girin .
 - `-h` : Yardım parametreleri.
 # Kullanım:
 python mac_changer.py -i wlan0 -m 00:11:22:33:44:55
