@@ -1,7 +1,9 @@
 import subprocess as sp#Subprocess Linux komutlarını kullanma
 import optparse # optparse kütüphanesi
 import re #regex kütüphanesi
-print("""
+import colorama 
+green=colorama.Fore.GREEN
+print(green+"""
 #---------------------------------------------------------------------#
 #    _     _____   _  _____   ____ ___ ____ _     _____               #
 #   / \   |__  /  / \|_   _| |  _ \_ _/ ___| |   | ____|              #
